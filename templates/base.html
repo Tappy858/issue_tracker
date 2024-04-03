@@ -11,21 +11,38 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"
+            style="font-family: 'Times New Roman', serif; font-size: 24px;">Tomato</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="{% url 'home' %}" style="font-family: 'Times New Roman', serif;">Home</a>
+                <a class="nav-link" href="{% url 'about' %}" style="font-family: 'Times New Roman', serif;">About</a>
             </div>
         </div>
-    </nav>
+        <div class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            
+            <form class="d-flex" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-dark" type="submit">Log Out</button>
+            </form>
+            {% else %}
+            <a class="nav-link" href="{% url 'signup' %}" style="font-family: 'Times New Roman', serif;">Sign Up</a>
+            <a class="nav-link, btn btn-light" href="{% url 'login' %}">Log In</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+
+
     <div class="container">
         {% block content %}{% endblock content %}
     </div>
