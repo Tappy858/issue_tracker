@@ -1,6 +1,54 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-<h1>Home</h1>
-<p>Welcome to my Homepage web service!</p>
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-6">
+            <img src="#" class="img-fluid rounded" alt="🍅">
+        </div>
+        <div class="col-md-6">
+            <h1 class="display-4">Welcome to Tomato Scrub</h1>
+            <p class="lead">Streamline your projects and boost productivity with our multifunctional project management
+                app.</p>
+            <p>Organize tasks, collaborate with your team, and stay on top of deadlines effortlessly.</p>
+            {% if user.is_authenticated %}
+            {% else %}
+            <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Get Started</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Key Features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Task Management</h5>
+                        <p class="card-text">Stay organized with customizable to-do lists and task prioritization.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Team Collaboration</h5>
+                        <p class="card-text">Work together seamlessly with real-time collaboration and communication
+                            tools.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Progress Tracking</h5>
+                        <p class="card-text">Track project progress and milestones to ensure timely completion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
